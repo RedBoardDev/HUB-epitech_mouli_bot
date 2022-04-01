@@ -1,5 +1,7 @@
 import time
+import discord
 import requests
+from dotenv import dotenv_values
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
@@ -15,6 +17,10 @@ chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument("--disable-dev-shm-usage")
 chrome_options.add_experimental_option("excludeSwitches", ["enable-logging"])
 driver = webdriver.Chrome(options=chrome_options)
+
+client = discord.Client()
+secrets = dotenv_values(".env")
+token_discord = secrets["TOKEN_MOULI"]
 ####################INITS_FUNCTIONS####################
 
 def check_button_logIn():
@@ -37,3 +43,8 @@ def search_token(driver):
 
 connexion_microsoft_account(driver)
 response = search_token(driver)
+
+@client.event
+async def on_ready():
+    print("Le bot est prêt !")
+client.run(token_discord)
