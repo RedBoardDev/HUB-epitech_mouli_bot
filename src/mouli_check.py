@@ -9,6 +9,9 @@ async def check_new_mouli(client):
     port = '4634'
     link_req = "http://localhost:" + port + "/epitest/me/2021"
     req = requests.get(link_req)
+    if (req.status_code != 200):
+        print("Bad request when getting mouli")
+        return
     last_project = req.json()[-1]
     result = last_project["results"]
     new_testRunId = result['testRunId']
