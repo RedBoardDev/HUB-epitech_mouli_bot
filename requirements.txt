@@ -1,0 +1,7 @@
+discord
+dotenv
+time
+bitly_api
+datetime
+json
+requests

@@ -1,4 +1,3 @@
-import asyncio
 import requests
 from notification import set_notificationPrivate
 from discord.ext import tasks
